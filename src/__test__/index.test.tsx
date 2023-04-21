@@ -2,7 +2,7 @@ import { it, vi } from "vitest";
 
 import { render, screen } from "@testing-library/react";
 
-import ClerkHeader from "../components/ClerkHeader";
+import ClerkHeader from "../components/ClerkComponent";
 
 type SignOutButtonProps = {
   children: React.ReactNode;

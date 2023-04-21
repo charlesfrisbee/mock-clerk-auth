@@ -2,7 +2,7 @@ import { SignOutButton, useUser } from "@clerk/nextjs";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import ClerkHeader from "~/components/ClerkHeader";
+import ClerkHeader from "~/components/ClerkComponent";
 import LoadingSpinner from "~/components/LoadingSpinner";
 
 import { api } from "~/utils/api";
