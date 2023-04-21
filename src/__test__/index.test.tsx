@@ -2,7 +2,7 @@ import { it, vi } from "vitest";
 
 import { render, screen } from "@testing-library/react";
 
-import ClerkHeader from "../components/ClerkComponent";
+import ClerkComponent from "../components/ClerkComponent";
 
 type SignOutButtonProps = {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ it("Test Clerk signin", () => {
     }),
   }));
 
-  render(<ClerkHeader />);
+  render(<ClerkComponent />);
 
   screen.getByText("Sign in");
 });
