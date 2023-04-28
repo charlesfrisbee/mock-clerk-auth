@@ -4,23 +4,36 @@ import { render, screen } from "@testing-library/react";
 
 import ClerkComponent from "../components/ClerkComponent";
 
-type SignOutButtonProps = {
+import { type SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+
+type SignInOutButtonProps = {
   children: React.ReactNode;
 };
 
-it("Test Clerk signin", () => {
-  vi.mock("@clerk/nextjs", () => ({
-    SignOutButton: ({ children }: SignOutButtonProps) => <div>{children}</div>,
-    SignInButton: ({ children }: SignOutButtonProps) => <div>{children}</div>,
-    useUser: () => ({
-      isSignedIn: false,
-      user: {
-        id: "user_2NNEqL2nrIRdJ194ndJqAHwEfxC",
+type ReturnSigninButton = ReturnType<typeof SignInButton>;
 
-        fullName: "Charles Harris",
-      },
-    }),
-  }));
+it("Test Clerk signin", () => {
+  vi.mock("@clerk/nextjs", () => {
+    // Create an mockedFunctions object to match the functions we are importing from the @nextjs/clerk package in the ClerkComponent component.
+    const mockedFunctions = {
+      SignInButton: ({
+        children,
+      }: SignInOutButtonProps): ReturnSigninButton => <div>{children}</div>,
+      SignOutButton: ({ children }: SignInOutButtonProps) => (
+        <div>{children}</div>
+      ),
+      useUser: () => ({
+        isSignedIn: false,
+        user: {
+          id: "user_2NNEqL2nrIRdJ194ndJqAHwEfxC",
+
+          fullName: "Charles Harris",
+        },
+      }),
+    };
+
+    return mockedFunctions;
+  });
 
   render(<ClerkComponent />);
 
