@@ -3,7 +3,7 @@ import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 const ClerkComponent = () => {
   const { user, isSignedIn, isLoaded } = useUser();
 
-  console.log(user);
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <>

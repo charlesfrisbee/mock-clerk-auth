@@ -8,7 +8,7 @@
     "postinstall": "prisma generate",
     "lint": "next lint",
     "start": "next start",
-    "test": "vitest",
+    "test": "vitest ./src/**/*.test.tsx",
     "ci:local": "act"
   },
   "dependencies": {
